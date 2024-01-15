@@ -10,4 +10,10 @@ class QTexte extends Question{
         $this->setReponse($reponse);
     }
 
+    public function display(){
+        echo "<h2>" . $this->getQuestion() . "</h2>
+        <input type='text' name='reponse' id='reponse' placeholder='Votre réponse' required>
+        <imput type='button' value='retour'>
+        <input type='submit' value='Valider'>";
+    }
 }
