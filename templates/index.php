@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+$_SESSION["reponses"] = array();
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
