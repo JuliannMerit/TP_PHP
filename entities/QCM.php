@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Question.php';
+require_once 'entities/Question.php';
 
 class QCM extends Question{
     private array $propositions;

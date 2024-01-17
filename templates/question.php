@@ -2,6 +2,32 @@
 require_once '../entities/QTexte.php';
 require_once '../entities/QCM.php';
 
+try{
+    $file_bd = new PDO('sqlite:qcm.sqlite3');
+    $file_bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $result = $file_bd->query('SELECT * FROM questions');
+    $reponses = array();
+    $questions = array();
+    foreach ($result as $row) {
+        if ($row['type'] === "QTexte") {
+            $question = new QTexte($row['question'], $row['reponse'], $row['id']);
+        } else {
+            $autre_reponse = array();
+            $result2 = $file_bd->query('SELECT * FROM reponses WHERE id_question = ' . $row['id']);
+            foreach ($result2 as $row2) {
+                array_push($autre_reponse, $row2['reponse']);
+            }
+            $question = new QCM($row['question'], $autre_reponse, $row['id']);
+        }
+        array_push($questions, $question);
+    }
+
+
+}catch (PDOException $e) {
+    echo "Error !: " . $e->getMessage() . "<br/>";
+    die();
+}
+
 $questions = array(
     new QTexte("que fait 2+2?", "4", 0),
     new QCM("Question 2", array("rep1", "rep2", "rep3", "rep4"), "rep2", 1),

@@ -1,7 +1,8 @@
 CREATE TABLE IF NOT EXISTS QUESTION(
     id_question INTEGER PRIMARY KEY AUTOINCREMENT,
     question TEXT NOT NULL,
-    reponse TEXT NOT NULL
+    reponse TEXT NOT NULL,
+    type TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS REPONSE(
@@ -28,5 +29,14 @@ CREATE TABLE IF NOT EXISTS QUESTIONNAIRE_QUESTION(
     id_question INTEGER NOT NULL,
     FOREIGN KEY (id_questionnaire) REFERENCES QUESTIONNAIRE(id_questionnaire),
     FOREIGN KEY (id_question) REFERENCES QUESTION(id_question)
+);
+
+CREATE TABLE IF NOT EXISTS REPONSE_UTILISATEUR(
+    id_question INTEGER NOT NULL,
+    id_reponse INTEGER NOT NULL,
+    id_utilisateur INTEGER NOT NULL,
+    FOREIGN KEY (id_question) REFERENCES QUESTION(id_question),
+    FOREIGN KEY (id_reponse) REFERENCES REPONSE(id_reponse),
+    FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur)
 );
 
