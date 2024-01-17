@@ -1,23 +1,26 @@
 <?php
-require_once '../entities/QTexte.php';
-require_once '../entities/QCM.php';
+require_once 'QTexte.php';
+require_once 'QCM.php';
+require_once 'bd.php';
+
+date_default_timezone_set('Europe/Paris');
 
 try{
     $file_bd = new PDO('sqlite:qcm.sqlite3');
     $file_bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $result = $file_bd->query('SELECT * FROM questions');
+    $result = $file_bd->query('SELECT * FROM QUESTION');
     $reponses = array();
     $questions = array();
     foreach ($result as $row) {
         if ($row['type'] === "QTexte") {
-            $question = new QTexte($row['question'], $row['reponse'], $row['id']);
+            $question = new QTexte($row['question'], $row['reponse'], intval($row['id']));
         } else {
             $autre_reponse = array();
-            $result2 = $file_bd->query('SELECT * FROM reponses WHERE id_question = ' . $row['id']);
+            $result2 = $file_bd->query('SELECT * FROM REPONSE WHERE id_question = ' . intval($row['id']));
             foreach ($result2 as $row2) {
                 array_push($autre_reponse, $row2['reponse']);
             }
-            $question = new QCM($row['question'], $autre_reponse, $row['id']);
+            $question = new QCM($row['question'], $autre_reponse, $row['reponse'], intval($row['id']));
         }
         array_push($questions, $question);
     }
@@ -27,14 +30,6 @@ try{
     echo "Error !: " . $e->getMessage() . "<br/>";
     die();
 }
-
-$questions = array(
-    new QTexte("que fait 2+2?", "4", 0),
-    new QCM("Question 2", array("rep1", "rep2", "rep3", "rep4"), "rep2", 1),
-    new QCM("Question 3", array("rep1", "rep2", "rep3", "rep4"), "rep3", 2)
-);
-
-
 ?>
 
 <!DOCTYPE html>

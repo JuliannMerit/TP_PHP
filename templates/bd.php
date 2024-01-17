@@ -14,6 +14,8 @@ try {
     $insert_sql = file_get_contents('insert.sql');
     $result = $file_bd->exec($insert_sql);
 
+    $select = $file_bd->query('SELECT * FROM REPONSE');
+
 
 } catch (PDOException $e) {
     echo "Error !: " . $e->getMessage() . "<br/>";

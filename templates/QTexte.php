@@ -1,9 +1,9 @@
 <?php
 
-require_once 'Question.php';
+require 'QuestionC.php';
 
 
-class QTexte extends Question{
+class QTexte extends QuestionC{
     public function __construct(string $enonce, string $reponse, int $id){
         $this->setQuestion($enonce);
         $this->setReponse($reponse);
