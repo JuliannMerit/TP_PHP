@@ -1,13 +1,13 @@
 <?php
 
-require 'Question.php';
+require_once 'Question.php';
 
-use Question;
 
 class QTexte extends Question{
-    public function __construct(string $enonce, string $reponse){
+    public function __construct(string $enonce, string $reponse, int $id){
         $this->setQuestion($enonce);
         $this->setReponse($reponse);
+        $this->setId($id);
     }
 
     public function display(){
