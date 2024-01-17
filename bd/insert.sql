@@ -1,6 +1,6 @@
-INSERT INTO UTILISATEUR(id_utilisateur, nom, prenom) VALUES
-(1, 'Juliann', 'MERIT'),
-(2, 'Théo', 'AVIGNON');
+INSERT INTO UTILISATEUR(id_utilisateur, nom) VALUES
+(1, 'Juliann'),
+(2, 'Théo');
 
 INSERT INTO QUESTION(id_question, question, reponse) VALUES
 (1, 'Quel est le meilleur jeu de l''année ?', 'Baldur''s Gate'),
