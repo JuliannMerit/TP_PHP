@@ -1,8 +1,9 @@
 <?php
 
-require_once 'Question.php';
 
-class QCM extends Question{
+require 'Question.php';
+
+class QCM extends QuestionC{
     private array $propositions;
 
     public function __construct(string $enonce, array $propositions, string $reponse, int $id){

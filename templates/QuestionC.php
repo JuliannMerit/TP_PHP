@@ -1,6 +1,6 @@
 <?php
 
-abstract class Question{
+abstract class QuestionC{
     private string $reponse;
 
     private string $question;
