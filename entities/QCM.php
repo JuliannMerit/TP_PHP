@@ -19,4 +19,13 @@ class QCM extends Question{
     public function setPropositions(array $propositions): void{
         $this->propositions = $propositions;
     }
+
+    public function display(){
+        echo "<h2>" . $this->getQuestion() . "</h2>";
+        foreach($this->getPropositions() as $proposition){
+            echo "<input type='radio' name='reponse' value='" . $proposition . "'>" . $proposition . "<br>";
+        }
+        echo "<input type='button' value='retour'>
+        <input type='submit' value='Valider'>";
+    }
 }
