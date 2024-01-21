@@ -67,7 +67,7 @@
             }
 
             // Afficher le résultat final
-            echo "<p><strong>Votre score est de :</strong> $score points.</p>";
+            echo "<p><strong>Votre score est de :</strong> $score points sur " . count($questions) . ".</p>";
         } else {
             // Redirection si la requête n'est pas de type POST
             header("Location: question.php");

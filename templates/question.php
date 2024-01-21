@@ -9,7 +9,9 @@ session_start();
 $_SESSION["questions"] = array(
     new QTexte("que fait 2+2?", "4", 0),
     new QCM("Couleur rouge ?", array("noir", "bleu", "vert", "rouge"), "rouge", 1),
-    new QCM("animal chien ?", array("chat", "chien", "requin", "rat"), "chien", 2)
+    new QCM("animal chien ?", array("chat", "chien", "requin", "rat"), "chien", 2),
+    new QTexte("que fait 2+3?", "5", 3),
+    new QCM("Couleur bleu ?", array("noir", "bleu", "vert", "rouge"), "bleu", 4),
 );
 
 ?>

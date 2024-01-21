@@ -17,7 +17,7 @@ session_start();
         <h1>Quizz</h1>
 
         <form action="question.php?index=0" method="post">
-            <input class="textFieldNom" type="text" name="name" placeholder="Entrez votre nom">
+            <!--<input class="textFieldNom" type="text" name="name" placeholder="Entrez votre nom">-->
             <input class="validationNom" type="submit" value="Commencer">
         </form>
     </main>
